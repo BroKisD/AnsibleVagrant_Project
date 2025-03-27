@@ -1,0 +1,10 @@
+# Add this to postgresql.conf to enable HAProxy health checks
+listen_addresses = '*'
+max_connections = 100
+shared_buffers = 128MB
+dynamic_shared_memory_type = posix
+
+# Enable health check for HAProxy
+tcp_keepalives_idle = 60
+tcp_keepalives_interval = 60
+tcp_keepalives_count = 10
