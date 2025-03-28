@@ -17,5 +17,14 @@ Vagrant.configure("2") do |config|
 	config.vm.define "haproxy" do |haproxy|
 		haproxy.vm.hostname = "haproxy"
 		haproxy.vm.network "private_network", ip: "192.168.56.13"
+		
+		# Run Ansible provisioning after all VMs are up
+		haproxy.vm.provision "ansible" do |ansible|
+			ansible.playbook = "playbook.yml"
+			ansible.inventory_path = "inventory.ini"
+			ansible.limit = "all"
+			ansible.become = true
+			ansible.compatibility_mode = "2.0"
+		end
 	end
 end

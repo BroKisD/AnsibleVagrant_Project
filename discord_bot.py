@@ -6,15 +6,12 @@ from dotenv import load_dotenv
 import logging
 import sys
 
-# Add parent directory to path to find .env file
-sys.path.append('..')
-
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger('discord_bot')
 
 # Load environment variables
-load_dotenv('../.env')
+load_dotenv('.env')
 TOKEN = os.getenv('DISCORD_TOKEN')
 PG_HOST = os.getenv('PG_HOST')
 PG_USER = os.getenv('PG_USER')
